@@ -43,3 +43,6 @@ build/
 Vagrantfile
 chef/cookbooks/*
 chef/tmp
+
+# Idea tools
+/.idea/
