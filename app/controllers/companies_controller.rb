@@ -13,19 +13,9 @@ class CompaniesController < ApplicationController
   def show
     @company = @company.decorate(view_context)
 
-    set_company
-    #@company_badges = Array.new
     @company_users = User.where(company_id: @company.id)
     @company_badges = @company.badges.distinct
     @company_badges_tot = @company.badges.group(:badge_id).count
-    #@company_badges_tot = @company.badges.all(
-    #  :group  => "badge_id",
-    #  :select => "badge_id, COUNT(*) as tot"
-    #)
-    #.select('badge.*, COUNT(*) AS total').group('badge.id')
-    #@company_users.find_each do |user|
-    #  @company_badges << user.badges
-    #end
   end
 
   # GET /companies/new
