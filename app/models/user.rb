@@ -14,7 +14,28 @@ class User < ActiveRecord::Base
   end
 
   def watch_video video
-    videos << video
+
+    videos << video          #Record every viewing instance (TODO: refactor this)
+    return if watched? video #Already got credit for this video
+
+    if video.name == "Ruby classes"
+      bname = "SpeedRun"
+    else
+      video_count = videos.count
+      total_videos = Video.count
+      if video_count == 2
+        bname = "Half-Way"
+      elsif video_count == total_videos
+        bname = "All-Way"
+      end
+    end
+
+    b = Badge.find_by_name(bname)
+
+    #Make sure user doesn't already have the badge to be safe
+    if !b.nil? && BadgeUser.count(:conditions => ["user_id = ? and badge_id = ?", id, b.id])
+      bu = BadgeUser.create({:badge_id => b.id, :user_id => id})
+    end
   end
 
   def watched? video
