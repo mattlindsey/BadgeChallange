@@ -10,7 +10,10 @@ class VideosController < ApplicationController
   # GET /videos/1
   # GET /videos/1.json
   def show
-    current_user.try :watch_video, @video
+    if request.xhr?
+      current_user.try :watch_video, @video
+      render(:partial => 'play', :object => @video)
+    end
   end
 
   # GET /videos/new
