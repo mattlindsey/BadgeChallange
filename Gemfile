@@ -48,3 +48,6 @@ gem "font-awesome-rails"
 gem 'r_kit', '~> 0.2.1.1'
 gem 'rspec-rails', '~> 3.0.0'
 gem 'capybara'
+gem 'capybara-webkit'
+gem 'database_cleaner'
+gem 'launchy'

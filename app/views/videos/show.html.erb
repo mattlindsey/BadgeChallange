@@ -5,7 +5,7 @@
   <%= @video.name %>
 </p>
 <p>
-  <button type="button" id="watch" data-user-id=<%= current_user.id %> data-video-id=<%= @video.id %>>Watch Me!</button>
+  <button type="button" id="watch" data-user-id=<%= @current_user_id %> data-video-id=<%= @video.id %>>Watch Me!</button>
 </p>
 
 <% if current_user %>

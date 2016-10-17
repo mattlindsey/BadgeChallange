@@ -10,10 +10,10 @@ var VideoRunner = {
         var v = document.getElementById('watch')
         var user_id = v.dataset.userId;
         $.ajax({type: 'GET',
-            url:  this.formAction, //+ '.json',
+            url:  this.formAction,
             data: JSON.stringify({ user_id: user_id }),
             timeout: 5000,
-            success: VideoRunner.showVideo, //function(msg) {alert( "Data Saved: " + msg );},
+            success: VideoRunner.showVideo,
             error: function(xhrObj, textStatus, exception) {alert('Error!');}
         })
         return(false);
